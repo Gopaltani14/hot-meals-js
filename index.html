@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>Document</title>
+  </head>
+
+  <script src="index.js"></script>
+  <body>
+    <!-- header  -->
+    <header>
+      <div class="heading">
+        <h4 style="color: #ffb30e">Hot Meals</h4>
+      </div>
+      <div class="address">
+        <p>
+          <strong
+            >Deliver to:&nbsp;&nbsp;<i
+              class="fa-solid fa-location-dot"
+              style="color: #ffb30e"
+              >&nbsp;&nbsp;</i
+            ></strong
+          >Current Location<strong> Ashok Nagar,Chennai-600013</strong>
+        </p>
+      </div>
+      <div class="search-login-div">
+        <div class="search">
+          <p>
+            <i class="fa-solid fa-magnifying-glass" style="color: #ffb30e"
+              >&nbsp;</i
+            ><strong>Search Food</strong>
+          </p>
+        </div>
+        <div class="login-div">
+          <!-- <button onclick="document.getElementById('id01').style.display='block'" style="width:auto"><i class="fa-solid fa-user"></i>Login</button> -->
+          <!-- <h5><i class="fa-solid fa-user"></i>JuanGopal</h5> -->
+        </div>
+        <div class="cart-div">
+          <div id="cart-count"></div>
+          <div id="cart-icon">
+            <i class="fa-solid fa-cart-shopping" style="color: #d96608"></i>
+          </div>
+        </div>
+        <!-- logout button -->
+        <div>
+          <button id="logout" onclick="logout()">Logout</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- top-div -->
+    <div id="top-div">
+      <!-- banner -->
+      <div class="banner-page">
+        <div class="banner-div1">
+          <div class="ban-in-div1">
+            <h3>Look at your far meals</h3>
+            <p>within a few clicks, find meals that are accessible near you</p>
+          </div>
+
+          <div class="ban-in-div2">
+            <div class="ban-in-div2-div1">
+              <button class="ban-delivery-btn1">
+                <i class="fa-solid fa-motorcycle" style="color: #f17228"></i
+                >Delivery
+              </button>
+              <button class="ban-delivery-btn2">
+                <i class="fa-solid fa-bag-shopping" style="color: #757575"></i
+                >Pickup
+              </button>
+            </div>
+            <div class="ban-in-div2-div2">
+              <i class="fa-solid fa-location-dot" style="color: #ff7474"></i>
+              <input
+                type="text"
+                placeholder="Enter Your Address"
+                id="input-address"
+              />
+              <button>
+                <i class="fa-solid fa-magnifying-glass"></i>Find Food
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="banner-div2">
+          <img src="leaffood.png" alt="leaffood" />
+        </div>
+      </div>
+
+      <!-- first menu items -->
+      <div class="first-menu-div" id="menu-list">
+        <!-- refer script for dynamic operation -->
+        <!-- <div class="first-menu-item vada">
+            <div>
+            </div>
+            <p>Vada</p>
+            <button>30 min Delivery</button>
+        </div>
+        <div class="first-menu-item itly">
+            <div>
+            </div>
+            <p>Itly</p>
+            <button>30 min Delivery</button>
+        </div>
+        <div class="first-menu-item parotta">
+            <div>
+            </div>
+            <p>Parotta</p>
+            <button>30 min Delivery</button>
+        </div>
+        <div class="first-menu-item pongal">
+            <div>
+            </div>
+            <p>Kitchadi</p>
+            <button>30 min Delivery</button>
+        </div> -->
+      </div>
+
+      <!-- how does it work -->
+      <div class="process-parent">
+        <div class="process-div">
+          <div class="process-heading-div">
+            <h3>How does it work</h3>
+          </div>
+          <div class="process-in-div" id="process-list">
+            <!-- <div class="process-in-div-div">
+                <div class="discount" style="background: url('discount.png');background-repeat:no-repeat">
+                </div>
+                <p>Daily Discounts</p>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- search by food -->
+      <div class="search-food-div">
+        <div>
+          <h3>Search by Food</h3>
+        </div>
+        <div class="search-food-in-div" id="search-food">
+          <!-- <div>
+                <div class="search-food-item"
+                    style="background:url(dosa.png);background-repeat:no-repeat;background-size:contain"></div>
+                <p><strong>Dosa</strong></p>
+            </div> -->
+        </div>
+      </div>
+
+      <!--order section-->
+      <div class="ordersection-div">
+        <div class="ordersection-div-div1">
+          <div class="ordersection-div-div11">
+            <h3>
+              Best deals
+              <strong
+                style="
+                  color: #ffb30e;
+                  font-family: 'Source Sans 3', sans-serif;
+                  font-size: 43px;
+                "
+                >Crispy Diffen</strong
+              >
+            </h3>
+            <p>Enjoy the large size of Dosa.Complete perfect slice of dosa.</p>
+          </div>
+          <div class="ordersection-div-div12">
+            <button>PROCEED TO ORDER ></button>
+          </div>
+        </div>
+        <div class="ordersection-div-div2">
+          <img src="bigdosa.png" alt="bigdosa" />
+        </div>
+      </div>
+
+      <!--popular items-->
+      <div id="div-popular-parent">
+        <h2>Popular Items</h2>
+        <div class="popular-items-div" id="popular-items-div">
+          <!-- <div class="popular-items-in-div">
+                <div class="popular-item-img">
+                </div>
+                <p>Murukku</p>
+                <button>Order Now</button>
+            </div> -->
+        </div>
+      </div>
+      <!-- top-div ends here -->
+    </div>
+
+    <!-- ordering page after login  -->
+    <!-- displaying items to order -->
+    <div id="div-popular-parent">
+      <div class="popular-items-div" id="popular-items-div1">
+        <!-- <div class="popular-items-in-div">
+                <div class="popular-item-img">
+                </div>
+                <p>Murukku</p>
+                <button>Order Now</button>
+            </div> -->
+      </div>
+    </div>
+
+    <!--footer-->
+    <div class="footer-parent">
+      <div class="footer-div">
+        <div class="footer-in-div1">
+          <div>
+            <h3>Company</h3>
+            <p>About us</p>
+            <p>Team</p>
+            <p>Careers</p>
+            <p>Blog</p>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <p>Help & Support</p>
+            <p>Partner with us</p>
+            <p>Ride with us</p>
+          </div>
+          <div>
+            <h3>Legal</h3>
+            <p>Terms and Conditions</p>
+            <p>Refund & Cancellation</p>
+            <p>Privacy Policy</p>
+            <p>Cookie Policy</p>
+          </div>
+        </div>
+        <div class="footer-in-div2">
+          <div class="footer-in-div2-div1">
+            <h3>Follow Us</h3>
+          </div>
+          <div class="footer-in-div2-div2">
+            <i class="fa-brands fa-square-instagram" style="color: #ededee"></i>
+            <i class="fa-brands fa-facebook" style="color: #e9eaed"></i>
+            <i class="fa-brands fa-twitter" style="color: #eceff4"></i>
+          </div>
+          <div class="footer-in-div2-div3">
+            <p>Receive exclusive offers in your mailbox</p>
+          </div>
+          <div class="footer-in-div-div4">
+            <input
+              type="text"
+              placeholder="Enter your mail"
+              style="
+                padding: 7px;
+                width: 300px;
+                border-radius: 8px;
+                background: #424242;
+              "
+            />
+            <button>Subscribe</button>
+          </div>
+        </div>
+      </div>
+      <div class="right-div">
+        <p>All rights Reserved</p>
+        <p>
+          Made with <i class="fa-solid fa-heart" style="color: #ffdd00"></i> by
+          Juan
+        </p>
+      </div>
+    </div>
+
+    <!-- modal for login screen popup window -->
+    <div id="login-box" class="modal">
+      <div class="modal-content animate">
+        <div class="imgcontainer">
+          <span
+            onclick="document.getElementById('login-box').style.display='none'"
+            class="close"
+            title="Close Modal"
+            >&times;</span
+          >
+          <div class="modal-head-div">
+            <img src="leaffood.png" alt="Avatar" class="avatar" />
+            <h2>Hot Meals</h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <label for="uname"><b>Username</b></label>
+          <input
+            type="text"
+            class="usertxtinput"
+            placeholder="Enter Username"
+            name="uname"
+            required
+          />
+
+          <label for="psw"><b>Password</b></label>
+          <input
+            type="password"
+            class="passtxtinput"
+            placeholder="Enter Password"
+            name="psw"
+            required
+          />
+          <button onclick="loginProceed()" class="loginbtn">Login</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
