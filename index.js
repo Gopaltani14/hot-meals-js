@@ -30,8 +30,8 @@ function loginProceed(event) {
   const username = document.querySelector(".usertxtinput").value;
   const password = document.querySelector(".passtxtinput").value;
   const credential = {
-    username: "Juan",
-    password: "Juan",
+    username: "12",
+    password: "12",
   };
   if (username === credential.username && password === credential.password) {
     logindiv(1, username);
@@ -179,90 +179,86 @@ function popularfood() {
 //loginpage food items
 function loginpagefood() {
   let popularobj = [
-    { img: "murukku", value: "Murukku", class: "murukku" },
-    { img: "paniyaram", value: "Paniyaram", class: "paniyaram" },
+    { img: "murukku", value: "Murukku", class: "murukku", price: 30 },
+    { img: "paniyaram", value: "Paniyaram", class: "paniyaram", price: 40 },
     {
       img: "seevalmurukku",
       value: "seeval Murukku",
       class: "seevalmurukku",
+      price: 20,
     },
-    { img: "vegsoup", value: "Vegsoup", class: "vegsoup" },
-    { img: "mixture", value: "Mixture", class: "mixture" },
-    { img: "itly", value: "Itly", class: "itly" },
-    { img: "idiappam", value: "Idiappam", class: "idiappam" },
-    { img: "parotta", value: "Parotta", class: "parotta" },
-    { img: "puttu", value: "Puttu", class: "puttu" },
-    { img: "vegrice", value: "Vegrice", class: "vegrice" },
-    { img: "Vegsoup", value: "Vegsoup", class: "Vegsoup" },
+    { img: "vegsoup", value: "Vegsoup", class: "vegsoup", price: 40 },
+    { img: "mixture", value: "Mixture", class: "mixture", price: 50 },
+    { img: "itly", value: "Itly", class: "itly", price: 50 },
+    { img: "idiappam", value: "Idiappam", class: "idiappam", price: 45 },
+    { img: "parotta", value: "Parotta", class: "parotta", price: 80 },
+    { img: "puttu", value: "Puttu", class: "puttu", price: 70 },
+    { img: "vegrice", value: "Vegrice", class: "vegrice", price: 90 },
+    { img: "Vegsoup", value: "Vegsoup", class: "Vegsoup", price: 30 },
 
-    { img: "halwa", value: "Halwa", class: "halwa" },
-    { img: "laddu", value: "Laddu", class: "laddu" },
-    { img: "gulab_jamun", value: "Gulab Jamun", class: "gulabjamun" },
-    { img: "jangri", value: "Jangri", class: "jangri" },
+    { img: "halwa", value: "Halwa", class: "halwa", price: 40 },
+    { img: "laddu", value: "Laddu", class: "laddu", price: 80 },
+    {
+      img: "gulab_jamun",
+      value: "Gulab Jamun",
+      class: "gulabjamun",
+      price: 60,
+    },
+    { img: "jangri", value: "Jangri", class: "jangri", price: 20 },
     {
       img: "porivellangai_urundai",
       value: "Porivellangai Urundai",
       class: "porivellangai_urundai",
+      price: 60,
     },
   ];
   let popular = "";
   popularobj.map((e) => {
     popular += '<div class="popular-item-in-div">';
-    popular +=
-      '<div class="popular-item-img ' +
-      e.class +
-      '" style = "background:url(' +
-      e.img +
-      '.png);background-repeat:no-repeat;background-size:contain" ></div > ';
+    popular +='<div class="popular-item-img ' +e.class +'" style = "background:url(' +e.img +'.png);background-repeat:no-repeat;background-size:contain" ></div > ';
     popular += "<p><strong>" + e.value + "</strong></p>";
-    popular +=
-      "<button key='" +
-      e.class +
-      "' id='btn-order-" +
-      e.class +
-      "' onclick='fnOrderItems(this)'>Order Now</button>";
-    popular +=
-      "<div id='btn-quantity-" +
-      e.class +
-      "' style='display:none'><button key='" +
-      e.class +
-      "' id='btn-add-" +
-      e.class +
-      "' onclick='fnAdd(this)'> + </button>";
+    popular +="<p>Price : <strong id='pricevalue-" +e.class +"'>" +e.price +"</strong></p>";
+    popular +="<button key='" +e.class +"' id='btn-order-" +e.class +"' onclick='fnOrderItems(this)'>Order Now</button>";
+    popular +="<div id='btn-quantity-" +e.class +"' style='display:none'><button key='" +e.class +"' id='btn-add-" +e.class +"' onclick='fnAdd(this)'> + </button>";
     popular += "<p id='p-count-" + e.class + "'>1</p>";
-    popular +=
-      "<button key='" +
-      e.class +
-      "' id='btn-sub-" +
-      e.class +
-      "' onclick='fnSub(this)'> - </button></div>";
-
+    popular +="<button key='" +e.class +"' id='btn-sub-" +e.class +"' onclick='fnSub(this)'> - </button></div>";
     popular += "</div>";
   });
+
   document.getElementById("popular-items-div1").innerHTML = popular;
 }
 
 // adding items to the cart
 let OrderedItems = [];
+let itemCount = 0;
 function fnOrderItems(item) {
   document.querySelector("#" + item.id).style.display = "none";
   document.querySelector(
     "#btn-quantity-" + item.getAttribute("key")
   ).style.display = "block";
-  OrderedItems.push({ Item: item.getAttribute("key"), count: 1 });
-  document.querySelector("#cart-count").innerHTML = OrderedItems.length;
+  OrderedItems.push({
+    Item: item.getAttribute("key"),
+    count: 1,
+    img: item.getAttribute("key"),
+    price: document.getElementById("pricevalue-" + item.getAttribute("key"))
+      .innerHTML,
+  });
+  itemCount++;
+  document.querySelector("#cart-count").innerHTML = itemCount;
 }
 
 function fnAdd(item) {
-  let count = document.getElementById(
-    "p-count-" + item.getAttribute("key")
+  //getting the innerHTML value of count and assign it to the variable
+  let count = document.getElementById("p-count-" + item.getAttribute("key")
   ).innerHTML;
   count = parseInt(count) + 1;
   document.getElementById("p-count-" + item.getAttribute("key")).innerHTML =
     count;
 
-  let index = OrderedItems.findIndex((e) => e.Item == item.getAttribute("key"));
+  let index = OrderedItems.findIndex((e) => e.Item == item.getAttribute("key")); // To get the index from the orderItems array for the specific dish
   OrderedItems[index].count = count;
+  itemCount++;
+  document.querySelector("#cart-count").innerHTML = itemCount;
 }
 
 function fnSub(item) {
@@ -275,4 +271,28 @@ function fnSub(item) {
 
   let index = OrderedItems.findIndex((e) => e.Item == item.getAttribute("key"));
   OrderedItems[index].count = count;
+  itemCount--;
+  document.querySelector("#cart-count").innerHTML = itemCount;
+}
+
+//cart displaying
+function displayCart() {
+  document.querySelector(".cart-popup").style.display = "block";
+
+  console.log(OrderedItems);
+  cartItems = "";
+  OrderedItems.map((i) => {
+    cartItems += '<div id="card-item-div">';
+    cartItems += '<img src="' + i.img + '.png" alt="' + i.Item + 'image" />';
+    cartItems += "<p>" + i.Item + "</p>";
+    cartItems += "<p>" + i.price + "</p>";
+    cartItems += '<div id="quantity-div">';
+    cartItems += '<button key="' +i.Item +' id="btn-sub-' +i.Item +'" onclick="cartfnSub(this)">-</button>';
+    cartItems += "<p id='p-count-" + i.Item + "'>" + i.count + "</p>";
+    cartItems += '<button key="' +i.Item +' id="btn-add-' +i.Item +'" onclick="cartfnAdd(this)">+</button>';
+    cartItems += "</div>";
+    cartItems += "<p>0000</p>";
+    cartItems += "</div>";
+  });
+  document.getElementById("card-items-div").innerHTML = cartItems;
 }
