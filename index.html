@@ -48,7 +48,7 @@
         </div>
         <div class="cart-div">
           <div id="cart-count"></div>
-          <div id="cart-icon">
+          <div id="cart-icon" onclick="displayCart()">
             <i class="fa-solid fa-cart-shopping" style="color: #d96608"></i>
           </div>
         </div>
@@ -307,6 +307,44 @@
             required
           />
           <button onclick="loginProceed()" class="loginbtn">Login</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- cart popup -->
+    <div class="cart-popup">
+      <div class="cart-popup-content animate">
+        <!-- cart heading -->
+        <div class="cart-heading-div">
+          <h3>Hotmeals</h3>
+          <h5>Cart details</h5>
+          <span
+            onclick="document.querySelector('.cart-popup').style.display='none'"
+            class="cart-close"
+            title="Close Modal"
+            >&times;</span
+          >
+        </div>
+
+        <div id="card-items-div">
+          <div id="card-item-heading">
+            <p>Item</p>
+            <p>Name</p>
+            <p>price</p>
+            <p>quantity</p>
+            <p>Total</p>
+          </div>
+          <!-- <div id="card-item-div">
+            <img src="Laddu.png" alt="itemimage" />
+            <p>Name</p>
+            <p>price</p>
+            <div id="quantity-div">
+              <span id="quantity-increment">-</span>
+              <p>0</p>
+              <span id="quantity-decrement">+</span>
+            </div>
+            <p>Total</p>
+          </div> -->
         </div>
       </div>
     </div>
