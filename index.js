@@ -345,7 +345,8 @@ function displayCart() {
   document.getElementById("cart-item-display-div").innerHTML = cartItems;
 
   //displaying sum of total in the cart popup
-  let overAllTotalVariable=OrderedItems.reduce((a, b) => ({total: parseInt(a.total) + parseInt(b.total)}))
+  let overAllTotalVariable= OrderedItems.length != 0 ? OrderedItems.reduce((a, b) => ({total: parseInt(a.total) + parseInt(b.total)})) : 0
+
   console.log(typeof(overAllTotalVariable));
   document.getElementById("total-div").innerHTML=`<p>Sum  :</p><h3>${overAllTotalVariable.total}</h3>`;
 
@@ -357,8 +358,19 @@ function fnDelete(item){
   // console.log(index);
   displayCart()
    //displaying sum of total in the cart popup
-   let overAllTotalVariable=OrderedItems.reduce((a, b) => ({total: parseInt(a.total) + parseInt(b.total)}))
-   console.log(typeof(overAllTotalVariable));
-   document.getElementById("total-div").innerHTML=`<p>Sum  :</p><h3>${overAllTotalVariable.total}</h3>`;
+   let overAllTotalVariable= OrderedItems.length != 0 ? OrderedItems.reduce((a, b) => ({total: parseInt(a.total) + parseInt(b.total)})) :  0
+   document.getElementById("total-div").innerHTML=`<p>Sum  :</p><h3>${overAllTotalVariable.total || 0}</h3>`;
+
+    console.log(typeof(overAllTotalVariable));
+    console.log(overAllTotalVariable);
+    debugger
+  //  if(overAllTotalVariable.length==0){
+  //   console.log("temp ===> ", overAllTotalVariable)
+  //   overAllTotalVariable=0;
+  //   document.getElementById("total-div").innerHTML=`<p>Sum  :</p><h3>${overAllTotalVariable}</h3>`;
+    
+  //  }else{
+
+  //  }
  
 }
